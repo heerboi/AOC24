@@ -1,24 +1,13 @@
-use std::io::Read;
-use std::fs::File;
 use std::collections::HashMap;
-use std::time::{Duration, Instant};
-
-fn get_file_content(file_name: &str) -> String {
-    let mut result = File::open(file_name).unwrap();
-
-    let mut file_content = String::new();
-
-    result.read_to_string(&mut file_content).unwrap();
-
-    return file_content;
-}
+use std::time::Instant;
+mod file_utils;
 
 fn part1() {
 
     // a1 - b1 + a2 - b2
     // a1 + a2 + a3 - (b1 + b2 + b3)
     
-    let input = get_file_content("./input/day1.txt");
+    let input = file_utils::get_file_content("./input/day1.txt");
 
 
     let mut left: Vec<i32> = vec![];
@@ -51,7 +40,7 @@ fn part1() {
 // iterates through the hashmap, adding the multiplication to the sum
 
 fn part2() {
-    let input = get_file_content("./input/day1.txt");
+    let input = file_utils::get_file_content("./input/day1.txt");
 
     let mut sum = 0;
     let mut counter: HashMap<i32, Vec<i32>> = HashMap::new();
@@ -84,7 +73,7 @@ fn part2() {
 // After parsing, iterate through left arr, find matching key in counter, multiply, and sum all results.
 
 fn part2_2() {
-    let input = get_file_content("./input/day1.txt");
+    let input = file_utils::get_file_content("./input/day1.txt");
 
     let mut left: Vec<i32> = Vec::new();
     let mut counter: HashMap<i32, i32> = HashMap::new();
